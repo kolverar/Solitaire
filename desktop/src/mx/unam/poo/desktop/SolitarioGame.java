@@ -15,7 +15,7 @@ public class SolitarioGame extends Solitario{
         batch = new SpriteBatch();
     }
 
-    public void imprimirMenu(){
+    public void imprimirMenu() {
 
         try {
 
@@ -51,6 +51,10 @@ public class SolitarioGame extends Solitario{
             }
         }
         catch (NumberFormatException e){
+
+            System.out.println("Error! " + e);
+        }
+        catch (ArrayIndexOutOfBoundsException e){
 
             System.out.println("Error! " + e);
         }
