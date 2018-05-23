@@ -140,6 +140,7 @@ public class Tablero {
         return posicion;
     }
 
+    @org.jetbrains.annotations.NotNull
     private Carta remplazarCarta(Carta cartaAnterior, Carta cartaPosterior){
 
         return new Carta(cartaPosterior.getTexture(), cartaAnterior.getCoordX(), cartaAnterior.getCoordY(), cartaPosterior.getNumero(),
