@@ -17,7 +17,7 @@ public class Baraja {
         barajearBaraja();
     }
 
-    public void inicializarBaraja(){
+    private void inicializarBaraja(){
 
         String palosCartas[][] = {{"Corazon", "Rojo"}, {"Pica", "Negro"}, {"Diamante", "Rojo"}, {"Trebol", "Negro"}};
         int numeroBaraja = 0;
@@ -27,13 +27,13 @@ public class Baraja {
                 baraja[numeroBaraja++] = new Carta(null, 5, 365, numeroCarta + 1, paloColor[1], paloColor[0], true);
     }
 
-    public void inicializarTexturasBaraja(){
+    private void inicializarTexturasBaraja(){
 
         for (int i = 0; i < baraja.length; i++)
             baraja[i].setTexture(new Texture(Gdx.files.internal(baraja[i].getPalo() + "." + baraja[i].getNumero() + ".png")));
     }
 
-    public void barajearBaraja(){
+    private void barajearBaraja(){
 
         SecureRandom secureRandom = new SecureRandom();
         int numeroRandom;
@@ -41,7 +41,11 @@ public class Baraja {
 
         for (int i = 0; i < baraja.length; i++){
 
-            numeroRandom = secureRandom.nextInt(baraja.length - 1);
+            do{
+
+                numeroRandom = secureRandom.nextInt(baraja.length - 1);
+            }while ((numeroRandom == i));
+
             temporal = baraja[i];
             baraja[i] = baraja[numeroRandom];
             baraja[numeroRandom] = temporal;
