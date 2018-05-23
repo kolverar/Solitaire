@@ -11,7 +11,7 @@ public abstract class Solitario {
         tablero = new Tablero();
     }
 
-    public void mazoFila(int filaDestino){
+    protected void mazoFila(int filaDestino){
 
         // Copia de la carta del mazo (mazo[0])
         Carta cartaMazo = tablero.getCartaMazo("Mazo", 0);
@@ -31,7 +31,7 @@ public abstract class Solitario {
             moverMazoFila(cartaMazo, tablero.getCartaColumnas(0, filaDestino), 0, filaDestino);
     }
 
-    public void mazoPalo(){
+    protected void mazoPalo(){
 
         // Copia de la carta del mazo (mazo[0])
         Carta cartaMazo = tablero.getCartaMazo("Mazo", 0);
@@ -60,7 +60,7 @@ public abstract class Solitario {
         siguienteCartaMazo();
     }
 
-    public void filaFila(int filaOrigen, int numeroFilaOrigen, int filaDestino){
+    protected void filaFila(int filaOrigen, int numeroFilaOrigen, int filaDestino){
 
         // Copia de la carta seleccionada de la fila origen
         Carta cartaFilaOrigen = tablero.getCartaColumnas(numeroFilaOrigen, filaOrigen);
@@ -79,7 +79,7 @@ public abstract class Solitario {
         }
     }
 
-    public void filaPalo (int filaOrigen){
+    protected void filaPalo (int filaOrigen){
 
         if(tablero.posicionUltimaCarta(filaOrigen) != -1) {
 
@@ -98,7 +98,7 @@ public abstract class Solitario {
         }
     }
 
-    public void siguienteCartaMazo(){
+    protected void siguienteCartaMazo(){
 
         Carta mazo[] = new Carta[24];
         int cartasMazo;
