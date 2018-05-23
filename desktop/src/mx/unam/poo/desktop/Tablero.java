@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import org.jetbrains.annotations.NotNull;
 
 public class Tablero {
 
@@ -129,6 +130,13 @@ public class Tablero {
                 columnasCartas[j][i].setEstado(false);
     }
 
+    @NotNull
+    private Carta remplazarCarta(Carta cartaAnterior, Carta cartaPosterior){
+
+        return new Carta(cartaPosterior.getTexture(), cartaAnterior.getCoordX(), cartaAnterior.getCoordY(), cartaPosterior.getNumero(),
+                cartaPosterior.getColor(), cartaPosterior.getPalo(), cartaPosterior.getEstado());
+    }
+
     public int posicionUltimaCarta(int fila){
 
         int posicion = -1;
@@ -138,13 +146,6 @@ public class Tablero {
                 posicion++;
 
         return posicion;
-    }
-
-    @org.jetbrains.annotations.NotNull
-    private Carta remplazarCarta(Carta cartaAnterior, Carta cartaPosterior){
-
-        return new Carta(cartaPosterior.getTexture(), cartaAnterior.getCoordX(), cartaAnterior.getCoordY(), cartaPosterior.getNumero(),
-                cartaPosterior.getColor(), cartaPosterior.getPalo(), cartaPosterior.getEstado());
     }
 
     public void renderTablero(){

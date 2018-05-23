@@ -1,5 +1,7 @@
 package mx.unam.poo.desktop;
 
+import org.jetbrains.annotations.NotNull;
+
 public abstract class Solitario {
 
     protected Tablero tablero;
@@ -185,6 +187,7 @@ public abstract class Solitario {
         }
     }
 
+    @NotNull
     private Carta remplazarCarta(Carta cartaAnterior, Carta cartaPosterior){
 
         return new Carta(cartaPosterior.getTexture(), cartaAnterior.getCoordX(), cartaAnterior.getCoordY(), cartaPosterior.getNumero(),
