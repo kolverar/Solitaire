@@ -65,7 +65,7 @@ public class Tablero {
         return columnasCartas[i][j];
     }
 
-    public void inicializarTablero(){
+    private void inicializarTablero(){
 
         Baraja baraja = new Baraja();
 
@@ -74,13 +74,13 @@ public class Tablero {
         inicializarColumnas(baraja);
     }
 
-    public void inicializarMazo(Baraja baraja){
+    private void inicializarMazo(Baraja baraja){
 
         for (int i = 0; i < 24; i++)
             mazo[i] = baraja.getCarta(i);
     }
 
-    public void inicializarMazosPalos(){
+    private void inicializarMazosPalos(){
 
         mazoPica = new Carta(null,551,365, 0, "Negro", "Pica", true);
         mazoDiamante = new Carta( null,460,365, 0, "Rojo", "Diamante", true);
@@ -93,7 +93,7 @@ public class Tablero {
         mazoCorazon.setTexture(new Texture(Gdx.files.internal(mazoCorazon.getPalo() + "." + mazoCorazon.getNumero() + ".png")));
     }
 
-    public void inicializarColumnas(Baraja baraja){
+    private void inicializarColumnas(Baraja baraja){
 
         int coordX = -86;
         int coordY;
@@ -113,7 +113,7 @@ public class Tablero {
         inicializarEstadoCartas();
     }
 
-    public void inicializarCartasColumnas(Baraja baraja){
+    private void inicializarCartasColumnas(Baraja baraja){
 
         int numeroCarta = 24;
 
@@ -122,7 +122,7 @@ public class Tablero {
                 columnasCartas[j][i] = remplazarCarta(columnasCartas[j][i], baraja.getCarta(numeroCarta++));
     }
 
-    public void inicializarEstadoCartas(){
+    private void inicializarEstadoCartas(){
 
         for (int i = 1; i < 7; i++)
             for (int j = 0; j < i; j++)
@@ -140,12 +140,10 @@ public class Tablero {
         return posicion;
     }
 
-    public Carta remplazarCarta(Carta cartaAnterior, Carta cartaPosterior){
+    private Carta remplazarCarta(Carta cartaAnterior, Carta cartaPosterior){
 
-        cartaPosterior.setCoordX(cartaAnterior.getCoordX());
-        cartaPosterior.setCoordY(cartaAnterior.getCoordY());
-
-        return cartaPosterior;
+        return new Carta(cartaPosterior.getTexture(), cartaAnterior.getCoordX(), cartaAnterior.getCoordY(), cartaPosterior.getNumero(),
+                cartaPosterior.getColor(), cartaPosterior.getPalo(), cartaPosterior.getEstado());
     }
 
     public void renderTablero(){
@@ -160,7 +158,7 @@ public class Tablero {
         batch.end();
     }
 
-    public void renderMazos(){
+    private void renderMazos(){
 
         batch.draw(mazo[0].getTexture(), mazo[0].getCoordX(), mazo[0].getCoordY());
         batch.draw(mazoCorazon.getTexture(), mazoCorazon.getCoordX(), mazoCorazon.getCoordY());
@@ -169,7 +167,7 @@ public class Tablero {
         batch.draw(mazoPica.getTexture(), mazoPica.getCoordX(), mazoPica.getCoordY());
     }
 
-    public void renderColumnas(){
+    private void renderColumnas(){
 
         Texture cartaFalse = new Texture(Gdx.files.internal("carta.false.png"));
 

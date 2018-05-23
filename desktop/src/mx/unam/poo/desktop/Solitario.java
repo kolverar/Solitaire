@@ -48,7 +48,7 @@ public abstract class Solitario {
         }
     }
 
-    public void moverMazoFila(Carta cartaMazo, Carta cartaFila, int numeroFilaDestino, int filaDestino){
+    private void moverMazoFila(Carta cartaMazo, Carta cartaFila, int numeroFilaDestino, int filaDestino){
 
         //Movemos la carta del mazo a la ultima posicion de la fila
         tablero.setCartaColumnas(remplazarCarta(cartaFila, cartaMazo), tablero.posicionUltimaCarta(filaDestino) + 1, filaDestino);
@@ -125,14 +125,14 @@ public abstract class Solitario {
         System.out.println("Cartas en el mazo: " + cartasMazo);
     }
 
-    public void moverCartasFilas(int filaOrigen, int numeroFilaOrigen, int filaDestino){
+    private void moverCartasFilas(int filaOrigen, int numeroFilaOrigen, int filaDestino){
 
         verificarCartaAnterior(filaOrigen, numeroFilaOrigen);
         copiarCartas(filaOrigen, numeroFilaOrigen, filaDestino);
         eliminarCartas(filaOrigen, numeroFilaOrigen);
     }
 
-    public void copiarCartas(int filaOrigen, int numeroFilaOrigen, int filaDestino) {
+    private void copiarCartas(int filaOrigen, int numeroFilaOrigen, int filaDestino) {
 
         Carta cartaCopiar;
 
@@ -163,7 +163,7 @@ public abstract class Solitario {
         }
     }
 
-    public void verificarCartaAnterior(int filaOrigen, int numeroFilaOrigen){
+    private void verificarCartaAnterior(int filaOrigen, int numeroFilaOrigen){
 
         if(numeroFilaOrigen > 0) {
             Carta cartaVerificacion = tablero.getCartaColumnas(numeroFilaOrigen - 1, filaOrigen);
@@ -174,7 +174,7 @@ public abstract class Solitario {
         }
     }
 
-    public void eliminarCartas(int filaOrigen, int numeroFilaOrigen){
+    private void eliminarCartas(int filaOrigen, int numeroFilaOrigen){
 
         Carta cartaAnterior;
 
@@ -185,7 +185,7 @@ public abstract class Solitario {
         }
     }
 
-    public Carta remplazarCarta(Carta cartaAnterior, Carta cartaPosterior){
+    private Carta remplazarCarta(Carta cartaAnterior, Carta cartaPosterior){
 
         return new Carta(cartaPosterior.getTexture(), cartaAnterior.getCoordX(), cartaAnterior.getCoordY(), cartaPosterior.getNumero(),
                 cartaPosterior.getColor(), cartaPosterior.getPalo(), cartaPosterior.getEstado());
