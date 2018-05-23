@@ -60,7 +60,7 @@ public class SolitarioGame extends Solitario{
         }
     }
 
-    public int solicitarDatosVentana(String mensajeVentana){
+    private int solicitarDatosVentana(String mensajeVentana){
 
         JOptionPane jOptionPane = new JOptionPane(mensajeVentana, JOptionPane.PLAIN_MESSAGE,
                 JOptionPane.DEFAULT_OPTION, null);
